@@ -8,7 +8,16 @@ const productos = [
   { nombre: "Leche", precio: 1200, imagen: "/images/leche.jpg" },
 ];
 
-function Carrito({ cartItems, onClearCart, onAddToCart }) {
+function Carrito({ 
+  cartItems, 
+  cartTotal,
+  onClearCart, 
+  onAddToCart, 
+  onRemoveItem, 
+  onIncreaseQuantity, 
+  onDecreaseQuantity 
+}) {
+  
   return (
     <>
       <ProductosDisponibles 
@@ -18,8 +27,12 @@ function Carrito({ cartItems, onClearCart, onAddToCart }) {
       
       <CartSection 
         cartItems={cartItems} 
+        cartTotal={cartTotal}
         onClearCart={onClearCart} 
         onAddToCart={onAddToCart} 
+        onRemoveItem={onRemoveItem}
+        onIncreaseQuantity={onIncreaseQuantity}
+        onDecreaseQuantity={onDecreaseQuantity}
       />
     </>
   );

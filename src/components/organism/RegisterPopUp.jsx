@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Input from '../atoms/Input.jsx';
 import Button from '../atoms/Button.jsx';
+import styles from '../../styles/RegisterPopUp.module.css';
 
 function RegisterPopUp({ onClose }) {
   
@@ -86,8 +87,8 @@ function RegisterPopUp({ onClose }) {
 
 
   return (
-    <div className="overlay">
-      <div className="popup">
+    <div className={styles.overlay}>
+      <div className={styles.popup}>
         <h2>Crear Cuenta</h2>
         
         <form id="formularioPopup" onSubmit={handleSubmit} noValidate>
@@ -122,13 +123,13 @@ function RegisterPopUp({ onClose }) {
             Registrarse
           </Button>
 
-        </form>
+        </form> 
         
-        <div id="erroresPopup">
-          {error || '&nbsp;'} 
+        <div id="erroresPopup" className='error-message-placeholder'>
+          {error || null} 
         </div>
         
-        <button className="close" onClick={handleClose}>
+        <button className={styles.close} onClick={handleClose}>
           Cerrar
         </button>
       </div>
