@@ -10,6 +10,7 @@ import Catalogo from "./components/pages/Catalogo";
 import Nosotros from "./components/pages/Nosotros";
 import Perfil from "./components/pages/Perfil";
 import Checkout from "./components/pages/Checkout";
+import LoginPopUp from "./components/organism/LoginPopUp";
 
 
 
@@ -42,6 +43,10 @@ function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const handleOpenPopup = () => setIsPopupOpen(true);
   const handleClosePopup = () => setIsPopupOpen(false);
+
+  const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
+  const handleOpenLoginPopup = () => setIsLoginPopupOpen(true);
+  const handleCloseLoginPopup = () => setIsLoginPopupOpen(false);
 
   const [cart, setCart] = useState([]); 
 
@@ -81,6 +86,23 @@ function App() {
     console.log("Perfil actualizado:", newProfileData);
   };
 
+  const handleLogin = (email, password) => {
+    if (email === DUMMY_USER_DATA.correo && password === "123456") {
+      setCurrentUser(DUMMY_USER_DATA); 
+      setIsLoginPopupOpen(false); 
+      alert(`¡Bienvenida, ${DUMMY_USER_DATA.nombre}!`);
+    } else {
+      alert('Correo o contraseña incorrectos.');
+    }
+  };
+
+
+  const handleLogout = () => {
+    setCurrentUser(null); 
+    alert('Sesión cerrada.');
+
+  };
+
   const handleRemoveItem = (productName) => {
     setCart(prevCart => 
       prevCart.filter(item => item.nombre !== productName)
@@ -116,7 +138,10 @@ function App() {
   return (
     <BrowserRouter>
 
-      <Header onCrearCuentaClick={handleOpenPopup} 
+      <Header 
+        onCrearCuentaClick={handleOpenPopup} 
+        onLoginClick={handleOpenLoginPopup} 
+        onLogoutClick={handleLogout}
         user={currentUser}/>
 
       <main>
@@ -176,6 +201,7 @@ function App() {
       <Footer />
 
       {isPopupOpen && <RegisterPopUp onClose={handleClosePopup} />}
+      {isLoginPopupOpen && <LoginPopUp onSubmit={handleLogin} onClose={handleCloseLoginPopup} />}
     </BrowserRouter>
   );
 }

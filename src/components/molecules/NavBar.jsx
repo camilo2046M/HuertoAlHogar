@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "../atoms/Button.jsx";
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 
-function NavBar({ onCrearCuentaClick, user }) { 
+function NavBar({ onCrearCuentaClick,onLoginClick,onLogoutClick, user }) { 
   
   return (
     <nav>
@@ -28,10 +28,19 @@ function NavBar({ onCrearCuentaClick, user }) {
         </div>
       </div>
 
-      {!user && (
-        <Button onClick={onCrearCuentaClick}>
-          Crear Cuenta
-        </Button>
+          {user ? (
+            <Button onClick={onLogoutClick}>
+              Cerrar Sesión
+            </Button>
+            ) : (
+            <>
+            <Button onClick={onLoginClick}>
+             Iniciar Sesión
+            </Button>
+            <Button onClick={onCrearCuentaClick}>
+             Crear Cuenta
+            </Button>
+        </>
       )}
     </nav>
   );
