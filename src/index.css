@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -5,6 +6,7 @@ body {
   color: #333;
 }
 
+
 header {
   background-color: #2E8B57;
   color: white;
@@ -26,17 +28,14 @@ nav a {
   font-weight: 600;
 }
 
-.hero {
-  background: url('https://images.unsplash.com/photo-1606788075761-7b1f368f2c01?auto=format&fit=crop&w=1350&q=80') center/cover;
-  color: rgb(0, 0, 0);
+footer {
+  background: #8B4513;
+  color: white;
   text-align: center;
-  padding: 8rem 2rem;
+  padding: 1rem;
+  margin-top: 2rem;
 }
 
-.hero h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-}
 
 .btn {
   background-color: #FFD700;
@@ -47,6 +46,19 @@ nav a {
   border-radius: 8px;
   cursor: pointer;
 }
+
+.hero {
+  background: url('') center/cover;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 8rem 2rem;
+}
+
+.hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+}
+
 
 .catalogo {
   display: grid;
@@ -79,434 +91,94 @@ nav a {
   color: #666;
 }
 
-footer {
-  background: #8B4513;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-
-   .overlay {
-      display: none; 
-      position: fixed;
-      top: 0%; left: 0%;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .popup {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      width: 300px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      text-align: center;
-    }
-
-    .popup h2 {
-      margin-bottom: 15px;
-    }
-
-    .popup input {
-      width: 90%;
-      padding: 8px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .popup button {
-      margin-top: 10px;
-      padding: 10px;
-      width: 100%;
-      border: none;
-      border-radius: 5px;
-      background: #007bff;
-      color: white;
-      cursor: pointer;
-    }
-
-    .popup button:hover {
-      background: #0056b3;
-    }
-
-    .close {
-      background: #dc3545;
-    }
-
-    .close:hover {
-      background: #a71d2a;
-    }
-
-.popup button { margin-top: 8px; padding: 10px; width: 100%; border-radius: 6px; border: none; cursor: pointer; }
-.popup .close { background:#dc3545; color:white; }
-
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background-color: #f4f4f4; 
- height: 100vh;
-  display: grid;
-  grid-template-rows: 0.5fr 2fr 6fr;
-}
-
-header {
-  background-color: #2E8B57;
-  color: white;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-header h1 {
-  font-family: 'Playfair Display', serif;
-  margin: 0;
-}
-
-nav a {
-  color: white;
-  margin-left: 1rem;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.hero {
-  background: url('https://images.unsplash.com/photo-1606788075761-7b1f368f2c01?auto=format&fit=crop&w=1350&q=80') center/cover;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  padding: 8rem 2rem;
-}
-
-.hero h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-}
-
-.btn {
-  background-color: #FFD700;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  color: #333;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.catalogo {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-}
-
-.producto {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-.producto img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.producto h3 {
-  font-family: 'Playfair Display', serif;
-  margin: 0.5rem 0;
-}
-
-.producto p {
-  margin: 0.25rem 0;
-  color: #666;
-}
-
-footer {
-  background: #8B4513;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-
-   .overlay {
-      display: none; 
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .popup {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      width: 300px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      text-align: center;
-    }
-
-    .popup h2 {
-      margin-bottom: 15px;
-    }
-
-    .popup input {
-      width: 90%;
-      padding: 8px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .popup button {
-      margin-top: 10px;
-      padding: 10px;
-      width: 100%;
-      border: none;
-      border-radius: 5px;
-      background: #007bff;
-      color: white;
-      cursor: pointer;
-    }
-
-    .popup button:hover {
-      background: #0056b3;
-    }
-
-    .close {
-      background: #dc3545;
-    }
-
-    .close:hover {
-      background: #a71d2a;
-    }
-
-.popup button { margin-top: 8px; padding: 10px; width: 100%; border-radius: 6px; border: none; cursor: pointer; }
-.popup .close { background:#dc3545; color:white; }
 
 section {
-    display: flex;
-    padding: 2rem;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 section#First {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #F7F7F7; 
+  background-color: #F7F7F7; 
 }
 
 section#Second {
-    margin-top: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    background-color: #F7F7F7; 
+  margin-top: 0;
+  background-color: #F7F7F7; 
+  align-items: center; 
 }
 
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background-color: #F7F7F7;
-  color: #333;
-}
+/*section#nosotros1 {
+}*/
 
-header {
-  background-color: #2E8B57;
-  color: white;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-header h1 {
-  font-family: 'Playfair Display', serif;
-  margin: 0;
-}
-
-nav a {
-  color: white;
-  margin-left: 1rem;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.section1>h2{
-    text-align: center;
-}
-
-.section1>p{
-    text-align: center;
-    font-size: 1.2rem;
-    padding: 0 20%;
-}
-
-
-
-.hero {
-  background: url('https://images.unsplash.com/photo-1606788075761-7b1f368f2c01?auto=format&fit=crop&w=1350&q=80') center/cover;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  padding: 8rem 2rem;
-}
-
-.hero h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-}
-
-.btn {
-  background-color: #FFD700;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  color: #333;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.catalogo {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+section#maps {
   padding: 2rem;
 }
 
-.producto {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  text-align: center;
+.map-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.producto img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+iframe {
+  width: 600px;
+  height: 400px;
+  border: 0;
 }
 
-.producto h3 {
-  font-family: 'Playfair Display', serif;
-  margin: 0.5rem 0;
-}
-
-.producto p {
-  margin: 0.25rem 0;
-  color: #666;
-}
-
-footer {
-  background: #8B4513;
+button#prev, button#next {
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  background: #007bff;
   color: white;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
+  border-radius: 6px;
 }
 
-   .overlay {
-      display: none; 
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .popup {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      width: 300px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      text-align: center;
-    }
-
-    .popup h2 {
-      margin-bottom: 15px;
-    }
-
-    .popup input {
-      width: 90%;
-      padding: 8px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .popup button {
-      margin-top: 10px;
-      padding: 10px;
-      width: 100%;
-      border: none;
-      border-radius: 5px;
-      background: #007bff;
-      color: white;
-      cursor: pointer;
-    }
-
-    .popup button:hover {
-      background: #0056b3;
-    }
-
-    .close {
-      background: #dc3545;
-    }
-
-    .close:hover {
-      background: #a71d2a;
-    }
-
-.popup button { margin-top: 8px; padding: 10px; width: 100%; border-radius: 6px; border: none; cursor: pointer; }
-.popup .close { background:#dc3545; color:white; }
-
-    .map-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    iframe {
-      width: 600px;
-      height: 400px;
-      border: 0;
-    }
-    button#prev, button#next {
-      font-size: 24px;
-      padding: 10px;
-      cursor: pointer;
-      border: none;
-      background: #007bff;
-      color: white;
-      border-radius: 6px;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-
-section#nosotros1 {
-    display: flex;
-    padding: 2rem;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+button#prev:hover, button#next:hover {
+  background: #0056b3;
 }
 
-section#maps{
-    padding: 2rem;
+.nav-item-dropdown {
+  position: relative;
+  display: inline-block; 
+}
+
+
+/*.nav-item-dropdown .nav-link {
+}*/
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9; 
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 100; 
+  border-radius: 5px;
+  right: 0; 
+}
+
+.dropdown-content a {
+  color: #333; 
+  padding: 12px 16px;
+  text-decoration: none;
+  display: flex; 
+  align-items: center;
+  gap: 10px; 
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+
+.nav-item-dropdown:hover .dropdown-content {
+  display: block;
 }

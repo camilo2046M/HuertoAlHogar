@@ -1,30 +1,35 @@
-import React from "react";
-import ProductCard from "../molecules/ProductCard";
+import React from 'react';
+import ProductCard from '../molecules/ProductCard';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-function ProductList({ titulo, productos, onAddToCart }) {
+function ProductList({ titulo, productos = [], onAddToCart }) {
   
   if (!productos || productos.length === 0) {
     return (
-      <section className="catalogo-seccion">
+      <Container as="section" className="catalogo-seccion py-4">
         <h2 className="seccion-titulo">{titulo}</h2>
-        <p>No hay productos en esta categoría por el momento.</p>
-      </section>
+        <p>No se encontraron productos que coincidan con tu búsqueda en esta categoría.</p>
+      </Container>
     );
   }
 
   return (
-    <section className="catalogo-seccion"> 
+    <Container as="section" className="catalogo-seccion py-4"> 
       <h2 className="seccion-titulo">{titulo}</h2>
-      <div className="catalogo">
+      
+      <Row>
         {productos.map(producto => (
-          <ProductCard
-            key={producto.nombre} 
-            producto={producto} 
-            onAddToCart={onAddToCart} 
-          />
+          <Col xs={12} md={6} lg={4} key={producto.nombre} className="mb-4">
+            <ProductCard
+              producto={producto}
+              onAddToCart={onAddToCart}
+            />
+          </Col>
         ))}
-      </div>
-    </section>
+      </Row>
+    </Container>
   );
 }
 

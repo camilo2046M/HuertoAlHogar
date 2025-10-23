@@ -1,18 +1,24 @@
 import React, {useMemo} from 'react';
+import { Link } from 'react-router-dom';
 import CartItem from '../molecules/CartItem.jsx';
 import Button from '../atoms/Button.jsx';
 
 const productosDisponibles = [
-  { nombre: "Manzana", precio: 500, imagen: "/images/manzana.jpg" },
-  { nombre: "Miel", precio: 1000, imagen: "/images/miel.jpg" },
-  { nombre: "Leche", precio: 1200, imagen: "/images/leche.jpg" },
+  { nombre: "Manzana", precio: "$500 / kg", imagen: "/images/manzana.jpg" },
+  { nombre: "Miel", precio: "$1.000 / frasco", imagen: "/images/miel.jpg" },
+  { nombre: "Leche", precio: "$1.200 / litro", imagen: "/images/leche.jpg" },
 ];
 
-function CartSection({ cartItems, onClearCart, onAddToCart }) {
+function CartSection({ 
+  cartItems, 
+  cartTotal,
+  onClearCart, 
+  onAddToCart, 
+  onRemoveItem, 
+  onIncreaseQuantity, 
+  onDecreaseQuantity 
+}) {
 
-  const total = useMemo(() => {
-    return cartItems.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
-  }, [cartItems]);
 
   const handleAgregarAleatorio = () => {
     const randomProd = productosDisponibles[Math.floor(Math.random() * productosDisponibles.length)];
@@ -29,6 +35,7 @@ function CartSection({ cartItems, onClearCart, onAddToCart }) {
               <th>Producto</th>
               <th>Precio</th>
               <th>Cantidad</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody id="carritoCuerpo">
@@ -40,7 +47,12 @@ function CartSection({ cartItems, onClearCart, onAddToCart }) {
             ) : (
 
               cartItems.map(item => (
-                <CartItem key={item.nombre} item={item} />
+                <CartItem key={item.nombre}
+                 item={item}
+                 onRemove={onRemoveItem}
+                 onIncrease={onIncreaseQuantity}
+                 onDecrease={onDecreaseQuantity} 
+                 />
               ))
             )}
           </tbody>
@@ -51,11 +63,16 @@ function CartSection({ cartItems, onClearCart, onAddToCart }) {
         Agregar Producto Aleatorio
       </Button>
       
-      <h3>Total: $<span id="totalCarrito">{total}</span></h3>
-      
+      <h3>Total: $<span id="totalCarrito">{cartTotal}</span></h3>      
+     
       <Button className="btn" onClick={onClearCart}>
         Vaciar Carrito
       </Button>
+      {cartItems.length > 0 && (
+        <Link to="/checkout" className="btn" style={{ marginLeft: '10px' }}>
+          Finalizar Compra
+        </Link>
+      )}
     </section>
   );
 }
