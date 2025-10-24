@@ -1,0 +1,22 @@
+
+.input {
+  width: 100%; 
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  box-sizing: border-box; 
+}
+
+.error {
+  border-color: #dc3545;
+  background-color: #f8d7da; 
+}
+
+.input:focus {
+  border-color: #2E8B57; 
+  outline: none; 
+  box-shadow: 0 0 0 2px rgba(46, 139, 87, 0.2); 
+}

@@ -1,15 +1,16 @@
 import React from 'react';
-import Button from '../atoms/Button'; 
-import StarRating from '../atoms/StarRating.jsx';
+import Button from '../atoms/Button';
+import StarRating from '../atoms/StarRating'; 
+import styles from '../../styles/ProductCard.module.css';
 
 function ProductCard({ producto, onAddToCart }) {
-  
-  const { 
-    imagenSrc, 
-    nombre, 
-    origen, 
-    precio, 
-    descripcion, 
+
+  const {
+    imagenSrc,
+    nombre,
+    origen,
+    precio,
+    descripcion,
     disponibilidad,
     rating,
     reviewCount
@@ -20,17 +21,19 @@ function ProductCard({ producto, onAddToCart }) {
   };
 
   return (
-    <div className="producto">
+    <div className={styles.producto}>
       <img src={imagenSrc} alt={nombre} />
       <h3>{nombre}</h3>
-      <div style={{ padding: '0 1rem' }}>
+
+      <div className={styles.ratingContainer}>
         <StarRating rating={rating} reviewCount={reviewCount} />
       </div>
-      <p className="meta">Origen: {origen}</p>
-      <p className="precio">{precio}</p>
+
+      <p className={styles.meta}>Origen: {origen}</p>
+      <p className={styles.precio}>{precio}</p>
       {descripcion && <p>{descripcion}</p>}
       {disponibilidad && <p>{disponibilidad}</p>}
-      
+
       <Button className="btn small" onClick={handleAgregarClick}>
         Agregar al carrito
       </Button>

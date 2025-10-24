@@ -1,5 +1,6 @@
-import React from "react";
-import Button from "../atoms/Button.jsx";
+import React from 'react';
+import Button from '../atoms/Button';
+import styles from '../../styles/ProfileInfoDisplay.module.css';
 
 
 function ProfileInfoDisplay({ user, onEditClick }) {
@@ -9,20 +10,20 @@ function ProfileInfoDisplay({ user, onEditClick }) {
   const telefono = user?.telefono || "No registrado";
 
   return (
-    <div className="perfil-info">
-      <p><strong>Nombre:</strong> <span id="perfilNombre">{nombre}</span></p>
-      <p><strong>Correo:</strong> <span id="perfilCorreo">{correo}</span></p>
-      <p><strong>Dirección:</strong> <span id="perfilDireccion">{direccion}</span></p>
-      <p><strong>Teléfono:</strong> <span id="perfilTelefono">{telefono}</span></p>
+    <div className={styles.perfilInfo}>
+      <p><strong>Nombre:</strong> <span>{nombre}</span></p>
+      <p><strong>Correo:</strong> <span>{correo}</span></p>
+      <p><strong>Dirección:</strong> <span>{direccion}</span></p>
+      <p><strong>Teléfono:</strong> <span>{telefono}</span></p>
       
       {user && (
-        <Button className="btn" onClick={onEditClick}>
+        <Button className="btn" onClick={onEditClick}> 
           Editar Perfil
         </Button>
       )}
       
       {!user && (
-        <Button className="btn" onClick={() => alert('Ir a Login')}>
+        <Button className="btn" onClick={() => alert('Ir a Login')}> 
           Iniciar Sesión
         </Button>
       )}

@@ -15,8 +15,8 @@ import LoginPopUp from "./components/organism/LoginPopUp";
 
 
 const DUMMY_USER_DATA = {
-  nombre: "Ana Martínez",
-  correo: "ana.martinez@email.com",
+  nombre: "Rio chino",
+  correo: "rio@gmail.com",
   direccion: "Av. Siempre Viva 123, Santiago",
   telefono: "+56 9 1234 5678"
 };

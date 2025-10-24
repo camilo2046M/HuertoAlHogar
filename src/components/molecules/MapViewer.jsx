@@ -1,23 +1,25 @@
-import React from "react";
-import Button from "../atoms/Button.jsx";
+import React from 'react';
+import Button from '../atoms/Button'; 
+import styles from '../../styles/MapViewer.module.css';
 
 function MapViewer({ currentMapSrc, onPrevClick, onNextClick }) {
   return (
-    <div className="map-container">
-      <Button id="prev" onClick={onPrevClick}>
+    <div className={styles.mapContainer}>
+      <Button className={styles.navButton} onClick={onPrevClick}>
         ⬅
       </Button>
-      
-      <iframe 
-        id="mapFrame"
-        src={currentMapSrc} 
-        allowFullScreen="" 
+
+      <iframe
+        id="mapFrame" 
+        className={styles.mapFrame}
+        src={currentMapSrc}
+        allowFullScreen=""
         loading="lazy"
-        title="Nuestras Ubicaciones" 
+        title="Nuestras Ubicaciones"
       >
       </iframe>
-      
-      <Button id="next" onClick={onNextClick}>
+
+      <Button className={styles.navButton} onClick={onNextClick}>
         ➡
       </Button>
     </div>
