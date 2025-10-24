@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import Input from "./Input";
+import Input from "./components/atoms/Input";
+
 
 describe("Input component", () => {
   test("renders with correct placeholder and handles input", () => {
