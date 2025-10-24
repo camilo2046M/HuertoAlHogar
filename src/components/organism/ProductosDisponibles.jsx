@@ -2,9 +2,9 @@ import React from 'react';
 import Button from '../atoms/Button';
 import styles from '../../styles/ProductosDisponibles.module.css';
 const productos = [
-    { nombre: "Manzana", precio: "$500 / kg", imagen: "/images/manzana.jpg" },
-    { nombre: "Miel", precio: "$1.000 / frasco", imagen: "/images/miel.jpg" },
-    { nombre: "Leche", precio: "$1.200 / litro", imagen: "/images/leche.jpg" },
+    { nombre: "Manzana", precio: "500 / kg", imagen: "/images/manzana.jpg" },
+    { nombre: "Miel", precio: "1.000 / frasco", imagen: "/images/miel.jpg" },
+    { nombre: "Leche", precio: "1.200 / litro", imagen: "/images/leche.jpg" },
 ];
 
 function ProductosDisponibles({ onAddToCart }) { 
