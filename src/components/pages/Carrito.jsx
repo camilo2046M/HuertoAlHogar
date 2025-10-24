@@ -3,9 +3,9 @@ import CartSection from "../organism/CartSection.jsx";
 import ProductosDisponibles from "../organism/ProductosDisponibles.jsx";
 
 const productos = [
-  { nombre: "Manzana", precio: 500, imagen: "/images/manzana.jpg" },
-  { nombre: "Miel", precio: 1000, imagen: "/images/miel.jpg" },
-  { nombre: "Leche", precio: 1200, imagen: "/images/leche.jpg" },
+  { nombre: "Manzana", precio: 500, imagen: "./images/manzana.jpg" },
+  { nombre: "Miel", precio: 1000, imagen: "./images/miel.jpg" },
+  { nombre: "Leche", precio: 1200, imagen: "./images/leche.jpg" },
 ];
 
 function Carrito({ 

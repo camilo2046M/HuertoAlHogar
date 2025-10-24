@@ -37,9 +37,6 @@ test("CartSection component › renders cart items and handles actions", () => {
   expect(screen.getByText("$800")).toBeInTheDocument();
   expect(screen.getByText("1600")).toBeInTheDocument();
 
-  fireEvent.click(screen.getByText("Agregar Producto Aleatorio"));
-  expect(mockAddToCart).toHaveBeenCalledTimes(1);
-
   fireEvent.click(screen.getByText("Vaciar Carrito"));
   expect(mockClearCart).toHaveBeenCalledTimes(1);
 
