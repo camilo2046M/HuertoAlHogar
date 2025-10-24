@@ -1,0 +1,67 @@
+.carritoSeccion {
+  display: flex;
+  padding: 2rem;
+  justify-content: flex-start; 
+  align-items: center;
+  flex-direction: column;
+  background-color: #F7F7F7;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0; 
+}
+
+.seccionTitulo {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1.5rem;
+}
+
+.carritoLista {
+  width: 100%;
+  max-width: 800px; 
+  margin-bottom: 1.5rem;
+  overflow-x: auto; 
+}
+
+.carritoLista table {
+  width: 100%;
+  border-collapse: collapse; 
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden; 
+}
+
+.carritoLista th,
+.carritoLista td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee; 
+}
+
+.carritoLista th {
+  background-color: #f8f9fa; 
+  font-weight: 600;
+}
+
+.carritoLista td img {
+  vertical-align: middle; 
+  margin-right: 10px;
+}
+
+.carritoLista td button {
+  margin: 0 5px; 
+}
+
+.accionesCarrito {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap; 
+  justify-content: center;
+}
+
+.totalCarrito {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}

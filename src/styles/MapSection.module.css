@@ -1,0 +1,27 @@
+
+.mapSection {
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center; 
+}
+
+.mapSection h2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1rem;
+}
+
+.mapSection p {
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+.locationList {
+  list-style: none; 
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.locationList li {
+  margin-bottom: 0.25rem;
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import MapViewer from '../molecules/MapViewer.jsx';
+import MapViewer from '../molecules/MapViewer';
+import styles from '../../styles/MapSection.module.css';
 
 const locations = [
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d425998.7441418561!2d-70.95947141116672!3d-33.47235168616523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5410425af2f%3A0x8475d53c400f0931!2sSantiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1757650287905!5m2!1ses!2scl", // Santiago
@@ -11,7 +12,6 @@ function MapSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
-
     setCurrentIndex((prevIndex) => (prevIndex + 1) % locations.length);
   };
 
@@ -19,14 +19,13 @@ function MapSection() {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + locations.length) % locations.length);
   };
 
-
   const currentMapSrc = locations[currentIndex];
 
   return (
-    <section id="maps">
+    <section className={styles.mapSection}>
       <h2>Nuestras Ubicaciones</h2>
       <p>Operamos en más de 9 puntos a lo largo de Chile, incluyendo:</p>
-      <ul>
+      <ul className={styles.locationList}>
         <li>Santiago</li>
         <li>Puerto Montt</li>
         <li>Villarica</li>
@@ -36,8 +35,8 @@ function MapSection() {
         <li>Concepción</li>
       </ul>
       <p>A continuación, puedes ver nuestras ubicaciones en el mapa:</p>
-      
-      <MapViewer 
+
+      <MapViewer
         currentMapSrc={currentMapSrc}
         onPrevClick={handlePrev}
         onNextClick={handleNext}

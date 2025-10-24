@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import ProfileInfoDisplay from '../molecules/ProfileInfoDisplay.jsx';
-import ProfileEditForm from '../molecules/ProfileEditForm.jsx';
+import ProfileInfoDisplay from '../molecules/ProfileInfoDisplay';
+import ProfileEditForm from '../molecules/ProfileEditForm';
+import styles from '../../styles/ProfileSection.module.css';
+
 
 function ProfileSection({ user, onUpdateProfile }) {
-  
   const [isEditing, setIsEditing] = useState(false);
 
   const handleSave = (newProfileData) => {
-    onUpdateProfile(newProfileData); 
-    setIsEditing(false); 
+    onUpdateProfile(newProfileData);
+    setIsEditing(false);
   };
 
   const handleCancel = () => {
-    setIsEditing(false); 
+    setIsEditing(false);
   };
 
   const handleEdit = () => {
@@ -20,19 +21,19 @@ function ProfileSection({ user, onUpdateProfile }) {
   };
 
   return (
-    <section className="perfil-seccion">
-      <h2 className="seccion-titulo">Mi Perfil</h2>
-      
+    <section className={styles.perfilSeccion}>
+      <h2 className={styles.seccionTitulo}>Mi Perfil</h2>
+
       {isEditing ? (
-        <ProfileEditForm 
-          user={user} 
-          onSave={handleSave} 
-          onCancel={handleCancel} 
+        <ProfileEditForm
+          user={user}
+          onSave={handleSave}
+          onCancel={handleCancel}
         />
       ) : (
-        <ProfileInfoDisplay 
-          user={user} 
-          onEditClick={handleEdit} 
+        <ProfileInfoDisplay
+          user={user}
+          onEditClick={handleEdit}
         />
       )}
     </section>

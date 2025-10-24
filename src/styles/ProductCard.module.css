@@ -1,0 +1,52 @@
+.producto {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  padding-bottom: 1rem; 
+  display: flex; 
+  flex-direction: column; 
+  height: 100%; 
+}
+
+.producto img {
+  width: 100%;
+  height: 180px; 
+  object-fit: cover;
+}
+
+.producto h3 {
+  font-family: 'Playfair Display', serif;
+  margin: 0.75rem 0 0.5rem 0; 
+  font-size: 1.2rem;
+}
+
+.ratingContainer {
+  padding: 0 1rem 0.5rem 1rem; 
+  display: flex; 
+  justify-content: center;
+}
+
+.producto p {
+  margin: 0.25rem 1rem; 
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.meta {
+  font-style: italic;
+}
+
+.precio {
+  font-weight: bold;
+  color: #333;
+  margin-top: 0.5rem;
+}
+
+.producto button {
+  margin-top: auto; 
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: calc(100% - 2rem); 
+}
