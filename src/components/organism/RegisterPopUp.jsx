@@ -1,135 +1,73 @@
 import React, { useState } from 'react';
 import Input from '../atoms/Input.jsx';
 import Button from '../atoms/Button.jsx';
-import styles from '../../styles/RegisterPopUp.module.css';
+// Importa los estilos (asegúrate que la ruta sea correcta, ej: ./RegisterPopUp.module.css)
+import styles from '../../styles/RegisterPopUp.module.css'; 
 
-function RegisterPopUp({ onClose }) {
+// 1. Asegúrate de que acepta 'onSubmit' y 'onClose'
+function RegisterPopUp({ onClose, onSubmit }) { 
   
   const [formData, setFormData] = useState({
-    nombrePopup: '',
-    correoPopup: '',
-    passwordPopup: ''
+    nombre: '', // (Debe ser 'nombre', 'correo', 'password')
+    correo: '',
+    password: ''
   });
 
-  const [error, setError] = useState(null); 
-  const [errorField, setErrorField] = useState(null); 
-
+  // 2. Este es el handler para los inputs
   const handleChange = (e) => {
     const { id, value } = e.target;
-    
     setFormData(prevData => ({
       ...prevData,
       [id]: value
     }));
-
-
-    if (id === errorField) {
-      if (id === 'nombrePopup' && value.trim().length >= 5) {
-        setError(null);
-        setErrorField(null);
-      }
-      if (id === 'correoPopup' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-        setError(null);
-        setErrorField(null);
-      }
-      if (id === 'passwordPopup' && value.length >= 6) {
-        setError(null);
-        setErrorField(null);
-      }
-    }
   };
 
-  const validate = () => {
-    const { nombrePopup, correoPopup, passwordPopup } = formData;
-    
-    if (nombrePopup.trim().length < 5) {
-      setError("El nombre debe tener al menos 5 caracteres.");
-      setErrorField("nombrePopup");
-      return false;
-    }
-    
-    const correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!correoRegex.test(correoPopup)) {
-      setError("Correo inválido.");
-      setErrorField("correoPopup");
-      return false;
-    }
-    
-    if (passwordPopup.length < 6) {
-      setError("La contraseña debe tener al menos 6 caracteres.");
-      setErrorField("passwordPopup");
-      return false;
-    }
-    
-    setError(null);
-    setErrorField(null);
-    return true;
-  };
-
+  // 3. ¡ESTA ES LA LÓGICA CLAVE!
+  // Llama a la función 'onSubmit' de App.jsx
   const handleSubmit = (e) => {
     e.preventDefault(); 
     
-    if (validate()) {
-      alert("✅ Formulario enviado correctamente!");
-      handleClose(); 
-    } else {
-      alert("❌ Revisa los campos del formulario.");
-    }
+    // Aquí es donde contacta al backend (vía App.jsx)
+    onSubmit(formData); 
+    
+    // NO hay alerta de "éxito" aquí. App.jsx se encarga de eso.
   };
-
-
-  const handleClose = () => {
-    setFormData({ nombrePopup: '', correoPopup: '', passwordPopup: '' });
-    setError(null);
-    setErrorField(null);
-    onClose(); 
-  };
-
 
   return (
     <div className={styles.overlay}>
       <div className={styles.popup}>
         <h2>Crear Cuenta</h2>
         
-        <form id="formularioPopup" onSubmit={handleSubmit} noValidate>
+        <form onSubmit={handleSubmit} noValidate>
           
           <Input
-            id="nombrePopup"
+            id="nombre"
             placeholder="Nombre de usuario"
-            value={formData.nombrePopup}
+            value={formData.nombre}
             onChange={handleChange}
-            hasError={errorField === 'nombrePopup'}
           />
-          
           <Input
             type="email"
-            id="correoPopup"
+            id="correo"
             placeholder="Correo electrónico"
-            value={formData.correoPopup}
+            value={formData.correo}
             onChange={handleChange}
-            hasError={errorField === 'correoPopup'}
           />
-          
           <Input
             type="password"
-            id="passwordPopup"
+            id="password"
             placeholder="Contraseña"
-            value={formData.passwordPopup}
+            value={formData.password}
             onChange={handleChange}
-            hasError={errorField === 'passwordPopup'}
           />
           
           <Button type="submit">
             Registrarse
           </Button>
-
-        </form> 
+        </form>
         
-        <div id="erroresPopup" className='error-message-placeholder'>
-          {error || null} 
-        </div>
-        
-        <button className={styles.close} onClick={handleClose}>
+        {/* Usamos el 'onClose' que nos pasó App.jsx */}
+        <button className={styles.close} onClick={onClose}>
           Cerrar
         </button>
       </div>

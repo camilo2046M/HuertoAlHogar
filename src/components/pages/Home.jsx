@@ -1,30 +1,35 @@
-import React from "react";
-import Hero from "../organism/Hero.jsx";
-import ProductList from "../organism/ProductList.jsx";
+import React, { useState, useEffect } from 'react'; // 1. Importa useState y useEffect
+import Hero from '../organism/Hero.jsx';
+import ProductList from '../organism/ProductList.jsx';
+import ProductoService from '../../services/ProductoService.js'; // 2. Importa el servicio
 
-const productosDestacados = [
-  { 
-    nombre: 'Manzanas Fuji', 
-    origen: 'Villarica', 
-    precio: '$2.500 / kg',
-    imagenSrc: '/images/manzana.jpg'
-  },
-  { 
-    nombre: 'Zanahorias Orgánicas', 
-    origen: 'Valparaíso', 
-    precio: '$1.800 / kg',
-    imagenSrc: 'https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=600&q=80'
-  },
-  { 
-    nombre: 'Miel Orgánica', 
-    origen: 'Nacimiento', 
-    precio: '$5.000 / frasco',
-    imagenSrc: '/images/miel.jpg'
-  }
-];
+function Home({ onAddToCart }) {
+  
+  // 3. Crea un estado para guardar los productos que lleguen de la API
+  const [productosDestacados, setProductosDestacados] = useState([]);
 
+  // 4. useEffect para cargar los datos de la API cuando el componente se monta
+  useEffect(() => {
+    
+    const fetchDestacados = async () => {
+      try {
+        // 5. Llama al servicio pidiendo la página 0, tamaño 3
+        const response = await ProductoService.getAllProductos(0, 3);
+        
+        // 6. Guarda los productos (vienen dentro de 'content' en la paginación)
+        setProductosDestacados(response.data.content);
+        
+      } catch (error) {
+        console.error("Error al cargar productos destacados:", error);
+        // Manejo de error (opcional)
+      }
+    };
 
-function Home({onAddToCart}) {
+    fetchDestacados();
+  }, []); // El array vacío [] asegura que esto se ejecute solo una vez
+
+  // El resto del componente es igual, pero ahora 'productosDestacados'
+  // se llena con datos reales de la API.
   return (
     <>
       <Hero />
