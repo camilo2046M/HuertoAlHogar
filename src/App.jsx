@@ -12,6 +12,7 @@ import Perfil from "./components/pages/Perfil";
 import Checkout from "./components/pages/Checkout";
 import LoginPopUp from "./components/organism/LoginPopUp";
 import AuthService from "./services/AuthService";
+import Blog from "./components/pages/Blog";
 
 
 
@@ -83,41 +84,33 @@ function App() {
 
 const handleLogin = async (email, password) => {
     try {
-      // Llama a la API
       const response = await AuthService.login(email, password);
       
-      // La API devuelve 200 OK y el objeto Usuario
       const usuarioLogueado = response.data;
       
-      setCurrentUser(usuarioLogueado); // Guarda el usuario en el estado
-      setIsLoginPopupOpen(false); // Cierra el modal
+      setCurrentUser(usuarioLogueado); 
+      setIsLoginPopupOpen(false); 
       alert(`¡Bienvenido/a, ${usuarioLogueado.nombre}!`);
 
     } catch (error) {
       console.error("Error en el login:", error);
-      // El backend devuelve 401 (Unauthorized) si las credenciales son malas
       alert('Correo o contraseña incorrectos.');
     }
   };
 
   const handleRegister = async (usuarioData) => {
-    // usuarioData es el objeto { nombre, correo, password }
     try {
       const response = await AuthService.register(usuarioData);
       
-      // La API devuelve el usuario creado
       const usuarioNuevo = response.data;
 
-      // Opcional: Iniciar sesión automáticamente después de registrarse
       setCurrentUser(usuarioNuevo);
-      setIsPopupOpen(false); // Cierra el modal de registro
+      setIsPopupOpen(false); 
       alert(`¡Registro exitoso! Bienvenido/a, ${usuarioNuevo.nombre}`);
 
     } catch (error) {
       console.error("Error en el registro:", error);
-      // El backend devuelve 400 (Bad Request) si la validación falla
       if (error.response && error.response.data && error.response.data.errors) {
-        // Muestra los errores de validación
         const errores = Object.values(error.response.data.errors).join("\n");
         alert(`Error en el registro:\n${errores}`);
       } else {
@@ -128,9 +121,8 @@ const handleLogin = async (email, password) => {
 
 
 const handleLogout = () => {
-    setCurrentUser(null); // Simplemente borra al usuario del estado
+    setCurrentUser(null); 
     alert('Sesión cerrada.');
-    // (En un sistema con tokens JWT, aquí se invalidaría el token)
   };
 
   const handleRemoveItem = (productName) => {
@@ -212,15 +204,16 @@ const handleLogout = () => {
               />
             } 
           />
+          <Route path="/blog" element={<Blog />} />
           <Route 
-            path="/checkout"
-            element={
-              <Checkout 
-                user={currentUser}
-                cartItems={cart}
-                cartTotal={cartTotal}
-                onCheckoutSubmit={handleClearCart} 
-              />
+          path="/checkout"
+          element={
+            <Checkout 
+              user={currentUser}     // 👈 Pasa el objeto usuario completo
+              cartItems={cart}       // 👈 Pasa los items del carrito
+              cartTotal={cartTotal}
+              onCheckoutSubmit={handleClearCart} 
+            />
             } 
           />        
           
@@ -235,7 +228,6 @@ const handleLogout = () => {
         onSubmit={handleRegister} 
       />}
       
-      {/* (LoginPopUp ya estaba bien) */}
       {isLoginPopupOpen && <LoginPopUp 
         onSubmit={handleLogin} 
         onClose={handleCloseLoginPopup} 

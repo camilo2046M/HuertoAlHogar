@@ -2,6 +2,8 @@ import React from 'react';
 import CheckoutForm from '../organism/CheckoutForm';
 import Container from 'react-bootstrap/Container';
 
+
+// 👇 Asegúrate de que recibe y pasa 'user' y 'cartItems'
 function Checkout({ user, cartItems, cartTotal, onCheckoutSubmit }) {
   return (
     <Container className="py-5">

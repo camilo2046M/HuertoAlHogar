@@ -1,0 +1,34 @@
+.pointsCard {
+  /* Usamos el Amarillo Mostaza (#FFD700) de tu paleta */
+  background: linear-gradient(135deg, #FFD700, #FFB000);
+  color: #333; /* Texto oscuro para buen contraste */
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+.iconWrapper {
+  margin-right: 1.5rem;
+  color: #8B4513; /* Marrón de tu paleta */
+}
+
+.contentWrapper {
+  flex-grow: 1;
+}
+
+.points {
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif; /* Fuente de encabezado */
+  display: block;
+  color: #fff; /* Texto blanco para que resalte sobre el amarillo */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.description {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.95rem;
+  color: #333; /* Texto oscuro */
+}

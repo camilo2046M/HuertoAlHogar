@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import Input from '../atoms/Input.jsx';
 import Button from '../atoms/Button.jsx';
-// Importa los estilos (asegúrate que la ruta sea correcta, ej: ./RegisterPopUp.module.css)
 import styles from '../../styles/RegisterPopUp.module.css'; 
 
-// 1. Asegúrate de que acepta 'onSubmit' y 'onClose'
 function RegisterPopUp({ onClose, onSubmit }) { 
   
   const [formData, setFormData] = useState({
-    nombre: '', // (Debe ser 'nombre', 'correo', 'password')
+    nombre: '', 
     correo: '',
     password: ''
   });
 
-  // 2. Este es el handler para los inputs
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData(prevData => ({
@@ -22,15 +19,12 @@ function RegisterPopUp({ onClose, onSubmit }) {
     }));
   };
 
-  // 3. ¡ESTA ES LA LÓGICA CLAVE!
-  // Llama a la función 'onSubmit' de App.jsx
+
   const handleSubmit = (e) => {
     e.preventDefault(); 
     
-    // Aquí es donde contacta al backend (vía App.jsx)
     onSubmit(formData); 
     
-    // NO hay alerta de "éxito" aquí. App.jsx se encarga de eso.
   };
 
   return (
@@ -66,7 +60,7 @@ function RegisterPopUp({ onClose, onSubmit }) {
           </Button>
         </form>
         
-        {/* Usamos el 'onClose' que nos pasó App.jsx */}
+        
         <button className={styles.close} onClick={onClose}>
           Cerrar
         </button>
