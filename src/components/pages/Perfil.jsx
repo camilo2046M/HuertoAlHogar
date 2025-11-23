@@ -14,7 +14,7 @@ function Perfil({ user, onUpdateProfile }) {
 
   useEffect(() => {
     // Si el usuario existe y está logueado...
-    if (user) {
+  if (user && user.id) { // ✅ Solo entra si el usuario tiene ID real
       const fetchOrders = async () => {
         try {
           // Llama a la API con el ID del usuario

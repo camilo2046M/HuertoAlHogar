@@ -1,52 +1,42 @@
-import axios from 'axios';
+// 👇 1. CORRECCIÓN: Usa '..' para subir de carpeta (de 'services' a 'src' y luego a 'api')
+import api from '../api/AxiosConfig.js'; 
 
-// 1. URL base de NUESTRO backend Spring Boot
-const API_BASE_URL = 'http://localhost:9090/api/productos';
+// 👇 2. CORRECCIÓN: Quita '/api' porque ya está en la configuración de Axios
+const API_BASE_URL = '/productos'; 
 
 class ProductoService {
 
-    // (GET /api/productos) - Adaptado para paginación
     getAllProductos(page = 0, size = 10, sort = 'nombre,asc') {
-        return axios.get(API_BASE_URL, {
-            params: {
-                page: page,
-                size: size,
-                sort: sort
-            }
+        return api.get(API_BASE_URL, {
+            params: { page, size, sort }
         });
     }
 
-    // (GET /api/productos/{id})
     getProductoById(id) {
-        return axios.get(`${API_BASE_URL}/${id}`);
+        return api.get(`${API_BASE_URL}/${id}`);
     }
 
-    // (POST /api/productos)
     createProducto(producto) {
-        return axios.post(API_BASE_URL, producto);
+        return api.post(API_BASE_URL, producto);
     }
 
-    // (PUT /api/productos/{id})
     updateProducto(id, producto) {
-        return axios.put(`${API_BASE_URL}/${id}`, producto);
+        return api.put(`${API_BASE_URL}/${id}`, producto);
     }
 
-    // (DELETE /api/productos/{id})
     deleteProducto(id) {
-        return axios.delete(`${API_BASE_URL}/${id}`);
+        return api.delete(`${API_BASE_URL}/${id}`);
     }
 
-    // (GET /api/productos/buscar) - El que creamos
     searchProductos(nombre) {
-        return axios.get(`${API_BASE_URL}/buscar`, {
-            params: { nombre: nombre }
+        return api.get(`${API_BASE_URL}/buscar`, {
+            params: { nombre }
         });
     }
-
+    
     getProductosByCategoria(categoria) {
-        return axios.get(`${API_BASE_URL}/categoria/${categoria}`);
+        return api.get(`${API_BASE_URL}/categoria/${categoria}`);
     }
 }
 
-// Exportamos una instancia de la clase
 export default new ProductoService();
