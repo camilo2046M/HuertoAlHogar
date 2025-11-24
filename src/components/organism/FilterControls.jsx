@@ -1,8 +1,8 @@
 import React from 'react';
-import Input from '../atoms/Input'; 
-import Container from 'react-bootstrap/Container'; 
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import styles from '../../styles/FilterControls.module.css'; // 👈 Importa los estilos
 
 function FilterControls({
   searchTerm,
@@ -13,13 +13,16 @@ function FilterControls({
   setSortOrder
 }) {
   return (
-    <Container className="py-3" style={{ backgroundColor: '#fdfdfd', borderRadius: '8px', marginBottom: '2rem' }}>
-      <Row className="g-3"> 
+    // 1. Usa styles.controlsContainer
+    <Container className={styles.controlsContainer}>
+      <Row className="g-3">
         
         <Col xs={12} md={6}>
-          <label htmlFor="search-bar" className="form-label">Buscar por nombre</label>
-          <Input
+          <label htmlFor="search-bar" className={styles.label}>Buscar por nombre</label>
+          <input
             id="search-bar"
+            type="text"
+            className={styles.customInput} // 👈 Aplica la clase personalizada
             placeholder="Ej: Manzana, Miel..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -27,10 +30,10 @@ function FilterControls({
         </Col>
 
         <Col xs={12} md={3}>
-          <label htmlFor="category-filter" className="form-label">Filtrar por Categoría</label>
+          <label htmlFor="category-filter" className={styles.label}>Filtrar por Categoría</label>
           <select 
             id="category-filter"
-            className="form-select" 
+            className={`form-select ${styles.customInput}`} // Combina Bootstrap con tu estilo
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
@@ -43,10 +46,10 @@ function FilterControls({
         </Col>
 
         <Col xs={12} md={3}>
-          <label htmlFor="sort-order" className="form-label">Ordenar por</label>
+          <label htmlFor="sort-order" className={styles.label}>Ordenar por</label>
           <select 
             id="sort-order"
-            className="form-select"
+            className={`form-select ${styles.customInput}`} // Combina Bootstrap con tu estilo
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value)}
           >

@@ -3,21 +3,26 @@ import ProductCard from '../molecules/ProductCard';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import styles from '../../styles/ProductList.module.css'; // 👈 Importa los estilos
 
 function ProductList({ titulo, productos = [], onAddToCart }) {
   
+  // Si no hay productos...
   if (!productos || productos.length === 0) {
     return (
-      <Container as="section" className="catalogo-seccion py-4">
-        <h2 className="seccion-titulo">{titulo}</h2>
+      // Usa styles.sectionContainer para el espaciado
+      <Container as="section" className={styles.sectionContainer}>
+        <h2 className={styles.sectionTitle}>{titulo}</h2>
         <p>No se encontraron productos que coincidan con tu búsqueda en esta categoría.</p>
       </Container>
     );
   }
 
   return (
-    <Container as="section" className="catalogo-seccion py-4"> 
-      <h2 className="seccion-titulo">{titulo}</h2>
+    // Usa styles.sectionContainer
+    <Container as="section" className={styles.sectionContainer}> 
+      {/* Usa styles.sectionTitle para el estilo con subrayado */}
+      <h2 className={styles.sectionTitle}>{titulo}</h2>
       
       <Row>
         {productos.map(producto => (

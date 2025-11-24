@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Asegúrate que Link está importado
 import styles from '../../styles/Hero.module.css';
+import buttonStyles from '../../styles/Button.module.css';
 
 function Hero() {
   return (
@@ -9,7 +10,7 @@ function Hero() {
         <h2>Del campo a tu hogar</h2>
         <p>Productos frescos, locales y sostenibles</p>
         
-        <Link className="btn" to="/catalogo">Ver catálogo</Link> 
+        <Link className={buttonStyles.btn} to="/catalogo">Ver catálogo</Link> 
       </div>
     </section>
   );

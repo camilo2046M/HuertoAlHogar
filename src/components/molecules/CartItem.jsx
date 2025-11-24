@@ -8,7 +8,7 @@ function CartItem({ item, onRemove, onIncrease, onDecrease }) {
     <tr className={styles.cartItemRow}>
       <td>
         <div className={styles.productInfo}>
-          <img src={item.imagen} alt={item.nombre} className={styles.productImage} /> 
+          <img src={item.imagenSrc} alt={item.nombre} className={styles.productImage} /> 
           {item.nombre}
         </div>
       </td>

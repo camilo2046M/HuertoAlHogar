@@ -1,0 +1,80 @@
+/* src/components/pages/Nosotros.module.css */
+
+.pageContainer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #f9f9f9; /* Fondo suave */
+}
+
+.section {
+  margin-bottom: 4rem; /* Separación entre secciones */
+}
+
+.mainTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #2E8B57; /* Verde Esmeralda */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.subTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #8B4513; /* Marrón Claro */
+  text-align: center;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Decoración debajo de los subtítulos */
+.subTitle::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #FFD700; /* Amarillo */
+  margin: 0.5rem auto 0;
+}
+
+.text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  text-align: center; /* O 'justify' si prefieres */
+  max-width: 800px; /* Evita líneas eternas */
+  margin: 0 auto 1.5rem; /* Centrado horizontal */
+}
+
+/* Lista de redes sociales */
+.socialList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.socialItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background: white;
+  border-radius: 50px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.socialItem:hover {
+  transform: translateY(-3px);
+  color: #2E8B57;
+}

@@ -1,24 +1,63 @@
-
 .btn {
-  background-color: #4dd40ee0;
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
   border: none;
-  padding: 0.75rem 1.5rem;
+  border-radius: 50px; /* Bordes redondeados estilo "pill" */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  
+  /* Color Principal (Amarillo/Dorado de tu marca) */
+  background-color: #FFD700; 
   color: #333;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
 }
 
-button#prev, button#next {
-  font-size: 24px;
-  padding: 10px;
-  cursor: pointer;
-  border: none;
-  background: #007bff;
+.btn:hover {
+  transform: translateY(-2px); /* Efecto de elevación */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  background-color: #ffc107; /* Un poco más oscuro */
+}
+
+.btn:active {
+  transform: translateY(0); /* Efecto de click */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn:disabled {
+  background-color: #e0e0e0;
+  color: #999;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Variante: Pequeño */
+.small {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+/* Variante: Peligro (Rojo) */
+.danger {
+  background-color: #ff6b6b;
   color: white;
-  border-radius: 6px;
+}
+.danger:hover {
+  background-color: #fa5252;
 }
 
-button#prev:hover, button#next:hover {
-  background: #0056b3;
+/* Variante: Secundario (Gris/Borde) */
+.secondary {
+  background-color: transparent;
+  border: 2px solid #2E8B57;
+  color: #2E8B57;
+  box-shadow: none;
+}
+.secondary:hover {
+  background-color: #2E8B57;
+  color: white;
 }

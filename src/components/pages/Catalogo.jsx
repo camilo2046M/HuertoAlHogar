@@ -2,7 +2,7 @@ import React , {useState, useEffect,useMemo} from 'react';
 import ProductList from '../organism/ProductList.jsx';
 import FilterControls from '../organism/FilterControls.jsx';
 import ProductoService from '../../services/ProductoService.js';
-
+import styles from '../../styles/Catalogo.module.css';
 
 const processProducts = (products, searchTerm, sortOrder) => {
   let processed = [...products];
@@ -67,18 +67,22 @@ function Catalogo({ onAddToCart }) {
 
     fetchCategorias();
   }, []);
-
-  const processedFrutas = useMemo(() => processProducts(frutas, searchTerm, sortOrder), [frutas, searchTerm, sortOrder]);
+const processedFrutas = useMemo(() => processProducts(frutas, searchTerm, sortOrder), [frutas, searchTerm, sortOrder]);
 const processedVerduras = useMemo(() => processProducts(verduras, searchTerm, sortOrder), [verduras, searchTerm, sortOrder]);
 const processedOrganicos = useMemo(() => processProducts(organicos, searchTerm, sortOrder), [organicos, searchTerm, sortOrder]);
 const processedLacteos = useMemo(() => processProducts(lacteos, searchTerm, sortOrder), [lacteos, searchTerm, sortOrder]);
 
+const totalResults = processedFrutas.length + processedVerduras.length + processedOrganicos.length + processedLacteos.length;
+
   return (
     <>
-      <section className="hero">
-        <h2>Catálogo de Productos</h2>
-        <p>Selecciona productos frescos y locales para tu hogar</p>
-      </section>
+{/* 👇 2. REEMPLAZA LA SECCIÓN HERO ANTIGUA POR ESTO */}
+      <header className={styles.pageHeader}>
+        <h1 className={styles.title}>Catálogo de Productos</h1>
+        <p className={styles.subtitle}>
+          Selecciona productos frescos, locales y sostenibles para tu hogar
+        </p>
+      </header>
 
       <FilterControls
         searchTerm={searchTerm}
@@ -89,7 +93,12 @@ const processedLacteos = useMemo(() => processProducts(lacteos, searchTerm, sort
         setSortOrder={setSortOrder}
       />
       
-
+    {totalResults === 0 && (
+        <div className="text-center py-5">
+          <h3>No encontramos productos que coincidan con tu búsqueda.</h3>
+          <p>Intenta con otro nombre o cambia los filtros.</p>
+        </div>
+      )}
 
       {(selectedCategory === 'all' || selectedCategory === 'frutas') && processedFrutas.length > 0 && (
         <ProductList 

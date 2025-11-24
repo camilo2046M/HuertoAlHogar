@@ -1,0 +1,26 @@
+/* src/components/pages/Catalogo.module.css */
+
+.pageHeader {
+  text-align: center;
+  padding: 4rem 1rem 2rem 1rem; /* Espacio arriba y abajo */
+  background-color: #e9f3e9; /* Un fondo gris muy suave (o blanco si prefieres) */
+  margin-bottom: 2rem; /* Separación con los filtros */
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.986); /* Una línea sutil para separar */
+}
+
+.title {
+  font-family: 'Playfair Display', serif; /* La fuente elegante */
+  font-size: 3rem;
+  color: #2E8B57; /* Verde corporativo */
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  color: #666; /* Gris suave */
+  max-width: 600px;
+  margin: 0 auto; /* Centra el bloque de texto */
+  line-height: 1.6;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo,useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // 1. Importa el Provider y el hook
@@ -39,8 +39,13 @@ function HuertoApp() {
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
   
   // Estado del Carrito
-  const [cart, setCart] = useState([]);
-
+const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem('shopping_cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem('shopping_cart', JSON.stringify(cart));
+  }, [cart]);
   // --- LÓGICA DEL CARRITO ---
   const handleAddToCart = (productoToAdd) => {
     setCart(prevCart => {
@@ -99,22 +104,32 @@ function HuertoApp() {
     }
   };
 
-  const handleRegisterSubmit = async (userData) => {
+ const handleRegisterSubmit = async (userData) => {
     try {
-      // 1. Registra
       await AuthService.register(userData);
-      
-      // 2. Auto-login
+      // Auto-login
       const data = await AuthService.login(userData.correo, userData.password);
-      
-      // 3. Actualiza contexto
-      login(data.token, { correo: data.username });
-      
+      login(data.token, data.username);
       setIsPopupOpen(false);
       alert("¡Cuenta creada con éxito!");
     } catch (error) {
-      console.error(error);
-      alert("Error al registrar: " + (error.response?.data?.error || "Inténtalo de nuevo"));
+      console.error("Error detallado:", error);
+      
+      // Intentamos extraer el mensaje exacto del backend
+      let mensajeError = "Error al registrar.";
+      
+      if (error.response && error.response.data) {
+        // Si el backend envía { "errors": { "password": "..." } }
+        if (error.response.data.errors) {
+           mensajeError = Object.values(error.response.data.errors).join("\n");
+        } 
+        // Si el backend envía { "error": "El correo ya existe" }
+        else if (error.response.data.error) {
+           mensajeError = error.response.data.error;
+        }
+      }
+      
+      alert("Atención:\n" + mensajeError);
     }
   };
 

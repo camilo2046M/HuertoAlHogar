@@ -20,9 +20,12 @@
   max-width: 800px; 
   margin-bottom: 1.5rem;
   overflow-x: auto; 
+  display: block; 
+  -webkit-overflow-scrolling: touch
 }
 
 .carritoLista table {
+  min-width: 600px;
   width: 100%;
   border-collapse: collapse; 
   background-color: #fff;
