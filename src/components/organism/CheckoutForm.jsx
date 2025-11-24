@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
@@ -19,6 +19,12 @@ function CheckoutForm({ user, cartItems, cartTotal, onCheckoutSubmit }) {
 
 const [isLoading, setIsLoading] = useState(false); // 1. Añadimos estado de carga
 
+useEffect(() => {
+    if (cartItems.length === 0) {
+      alert("Tu carrito está vacío. Serás redirigido al catálogo.");
+      navigate('/catalogo');
+    }
+  }, [cartItems, navigate]);
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData(prevData => ({ ...prevData, [id]: value }));
@@ -119,7 +125,8 @@ return (
           className="form-control" // Estilo de Bootstrap
           value={formData.fechaEntrega} 
           onChange={handleChange} 
-          required 
+         min={new Date().toISOString().split('T')[0]} 
+          required
         />
       </div>
 

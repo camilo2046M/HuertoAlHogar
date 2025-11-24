@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CartItem from '../molecules/CartItem';
 import Button from '../atoms/Button';
 import styles from '../../styles/CartSection.module.css';
+import buttonStyles from '../../styles/Button.module.css';  
 
 function CartSection({ cartItems, cartTotal, onClearCart, onAddToCart, ...props }) { 
 
@@ -43,7 +44,7 @@ function CartSection({ cartItems, cartTotal, onClearCart, onAddToCart, ...props 
                     Vaciar Carrito
                 </Button>
                 {cartItems.length > 0 && (
-                    <Link to="/checkout" className="btn"> 
+                    <Link to="/checkout" className={buttonStyles.btn}> 
                         Finalizar Compra
                     </Link>
                 )}

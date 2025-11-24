@@ -1,52 +1,61 @@
 .producto {
   background: white;
-  border-radius: 12px;
+  border-radius: 16px; /* Bordes más suaves */
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  text-align: center;
-  padding-bottom: 1rem; 
-  display: flex; 
-  flex-direction: column; 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* Magia de alineación */
   height: 100%; 
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-bottom: 1.5rem;
+}
+
+.producto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
 .producto img {
   width: 100%;
-  height: 180px; 
-  object-fit: cover;
+  height: 200px; /* Altura fija para uniformidad */
+  object-fit: cover; /* Recorta la imagen sin deformarla */
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .producto h3 {
   font-family: 'Playfair Display', serif;
-  margin: 0.75rem 0 0.5rem 0; 
-  font-size: 1.2rem;
+  margin: 1rem 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: #2c3e50;
+  padding: 0 1rem;
 }
 
 .ratingContainer {
-  padding: 0 1rem 0.5rem 1rem; 
-  display: flex; 
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
   justify-content: center;
 }
 
-.producto p {
-  margin: 0.25rem 1rem; 
-  color: #666;
-  font-size: 0.9rem;
-}
-
 .meta {
-  font-style: italic;
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 .precio {
-  font-weight: bold;
-  color: #333;
-  margin-top: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2E8B57; /* Verde corporativo */
+  margin: 0.5rem 0 1rem 0;
 }
 
+/* Empuja el botón hacia el final de la tarjeta */
 .producto button {
   margin-top: auto; 
-  margin-left: 1rem;
-  margin-right: 1rem;
-  width: calc(100% - 2rem); 
+  align-self: center; /* Centra el botón */
+  width: 80%; /* Que no ocupe todo el ancho */
 }
