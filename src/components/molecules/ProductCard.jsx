@@ -2,8 +2,12 @@ import React from 'react';
 import Button from '../atoms/Button';
 import StarRating from '../atoms/StarRating'; 
 import styles from '../../styles/ProductCard.module.css';
+import { useAuth } from '../../context/AuthContext';
 
-function ProductCard({ producto, onAddToCart }) {
+
+function ProductCard({ producto, onAddToCart, onDelete }) {
+
+  const { role } = useAuth();
 
   const {
     imagenSrc,
@@ -34,9 +38,17 @@ function ProductCard({ producto, onAddToCart }) {
       {descripcion && <p>{descripcion}</p>}
       {disponibilidad && <p>{disponibilidad}</p>}
 
-      <Button className="btn small" onClick={handleAgregarClick}>
-        Agregar al carrito
-      </Button>
+      {role === 'ADMIN' ? (
+        // Si es ADMIN, mostramos botón de borrar
+        <Button className="btn danger small" onClick={() => onDelete(producto.id)}>
+          Eliminar Producto
+        </Button>
+      ) : (
+        // Si es USER o Invitado, mostramos botón de comprar
+        <Button className="btn small" onClick={() => onAddToCart(producto)}>
+          Agregar al carrito
+        </Button>
+      )}
     </div>
   );
 }

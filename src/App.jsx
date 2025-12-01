@@ -84,19 +84,15 @@ const [cart, setCart] = useState(() => {
 
   // --- LÓGICA DE AUTENTICACIÓN ---
   
-  const handleLoginSubmit = async (email, password) => {
+const handleLoginSubmit = async (email, password) => {
     try {
-      // 1. Hacemos login y obtenemos el token
-      await AuthService.login(email, password); 
-      
-      // 2. ¡Paso clave! Inmediatamente pedimos los datos del usuario (ID, nombre, etc.)
-      const response = await AuthService.getPerfil();
-      
-      // 3. Actualizamos el contexto con el usuario COMPLETO (que tiene ID)
-      login(null, response.data); // El token ya está en localStorage, pasamos null o el token
-      
-      setIsLoginPopupOpen(false);
-      alert(`¡Bienvenido/a, ${response.data.nombre}!`);
+        const data = await AuthService.login(email, password);
+        
+        // 👇 ASEGÚRATE DE PASAR EL 3er ARGUMENTO (data.role)
+        login(data.token, { correo: data.username }, data.role); 
+        
+        setIsLoginPopupOpen(false);
+        alert("¡Bienvenido!");
 
     } catch (error) {
       console.error("Error en login:", error);
