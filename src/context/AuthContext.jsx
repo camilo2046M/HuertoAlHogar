@@ -1,50 +1,49 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import AuthService, { logout as logoutService } from '../services/AuthService';
+import AuthService, { logout as logoutService, getRole } from '../services/AuthService';
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
     const [isAuth, setIsAuth] = useState(false);
     const [user, setUser] = useState(null);
+    const [role, setRole] = useState(null);
     const [loading, setLoading] = useState(true); // Estado de carga para evitar parpadeos
 
     // 1. EFECTO DE INICIALIZACIÓN
-    useEffect(() => {
+  useEffect(() => {
         const initAuth = async () => {
             const token = localStorage.getItem('token');
-            
             if (token) {
                 try {
-                    // 👇 LLAMADA DE VERIFICACIÓN
-                    // Pedimos los datos reales al backend. Si el token es inválido, esto fallará.
                     const response = await AuthService.getPerfil();
-                    
                     setIsAuth(true);
-                    setUser(response.data); // ¡Aquí viene el usuario COMPLETO con ID!
+                    setUser(response.data);
+                    // 👇 2. Recuperar rol del storage al recargar
+                    setRole(getRole()); 
                 } catch (error) {
-                    console.error("Sesión inválida o expirada:", error);
-                    // Si falla, limpiamos todo
                     logoutService();
                     setIsAuth(false);
                     setUser(null);
+                    setRole(null);
                 }
             }
-            setLoading(false); // Terminamos de cargar
+            setLoading(false);
         };
-
         initAuth();
     }, []);
 
-    const login = (token, userData) => {
+ const login = (token, userData, userRole) => {
         setIsAuth(true);
         setUser(userData);
+        setRole(userRole); // Guardar en estado
     };
 
     const logout = () => {
         logoutService();
         setIsAuth(false);
         setUser(null);
-        window.location.href = '/'; // Redirigir al inicio
+        setRole(null); // Limpiar estado
+        window.location.href = '/';
     };
 
     // Mostrar cargando mientras verificamos sesión
@@ -53,7 +52,8 @@ export function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{ isAuth, user, login, logout }}>
+        // 👇 4. Pasar 'role' en el value
+        <AuthContext.Provider value={{ isAuth, user, role, login, logout }}>
             {children}
         </AuthContext.Provider>
     );
