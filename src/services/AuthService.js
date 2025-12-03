@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 // Usamos la ruta de autenticación
-const AUTH_URL = 'http://localhost:9090/api/auth';
-
+// Usa tu IP real
+const AUTH_URL = 'http://52.44.157.216:9090/api/auth';
 class AuthService {
 
 login(correo, password) {
