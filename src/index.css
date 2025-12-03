@@ -84,4 +84,73 @@ iframe {
 
 
 
+@media (max-width: 768px) {
 
+  /* 1. Títulos Gigantes: Los reducimos para que no rompan el ancho */
+  h1, .title, [class*="Hero_title"], [class*="Catalogo_title"] {
+    font-size: 2rem !important; /* Mucho más pequeño que el 3.5rem de escritorio */
+    line-height: 1.2 !important;
+    word-wrap: break-word;
+  }
+
+  h2, .section-titulo {
+    font-size: 1.5rem !important;
+  }
+
+  /* 2. Márgenes y Padding Exagerados */
+  section, container, .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-top: 2rem !important; /* Menos aire arriba */
+    padding-bottom: 2rem !important;
+  }
+
+  /* 3. El Carrito (Tabla): Asegurar Scroll Horizontal */
+  /* Esto evita que la tabla rompa el ancho de la página */
+  [class*="CartSection_carritoLista"], .table-responsive {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important; /* Permite deslizar con el dedo */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 600px; /* Fuerza el ancho para que el scroll aparezca */
+  }
+
+  /* 4. Modals / Popups: Que ocupen casi toda la pantalla */
+  [class*="ProductDetailPopUp_popup"], 
+  [class*="RegisterPopUp_popup"], 
+  [class*="LoginPopUp_popup"] {
+    width: 95% !important;
+    max-width: 95% !important;
+    flex-direction: column !important; /* Apilar imagen y texto */
+    max-height: 90vh !important; /* Evitar que sea más alto que el celular */
+    overflow-y: auto !important; /* Scroll interno si es necesario */
+  }
+  
+  /* Ajuste de imagen en popups móviles */
+  [class*="ProductDetailPopUp_imageContainer"], 
+  [class*="ProductDetailPopUp_imgStyle"] {
+    width: 100% !important;
+    height: 200px !important;
+  }
+
+  [class*="ProductDetailPopUp_infoContainer"] {
+    width: 100% !important;
+    padding: 1.5rem !important;
+  }
+  
+  /* 5. Header y Navegación */
+  header {
+    flex-direction: column; /* Logo arriba, menú abajo */
+    gap: 1rem;
+    padding: 1rem !important;
+  }
+  
+  nav {
+    gap: 1rem !important;
+    flex-wrap: wrap; /* Si los links no caben, bajan */
+    justify-content: center;
+  }
+}
