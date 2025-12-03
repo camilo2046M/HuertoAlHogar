@@ -12,7 +12,7 @@ function Home({ onAddToCart }) {
     
     const fetchDestacados = async () => {
       try {
-        const response = await ProductoService.getAllProductos(0, 3);
+        const response = await ProductoService.getAllProductos(0, 4);
         
         setProductosDestacados(response.data.content);
         

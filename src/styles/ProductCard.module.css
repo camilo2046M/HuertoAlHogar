@@ -59,3 +59,39 @@
   align-self: center; /* Centra el botón */
   width: 80%; /* Que no ocupe todo el ancho */
 }
+
+.shareButtons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+  opacity: 0; /* Oculto por defecto */
+  transition: opacity 0.3s ease;
+}
+
+/* Mostrar al pasar el mouse por la tarjeta */
+.producto:hover .shareButtons {
+  opacity: 1;
+}
+
+.iconBtn {
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2E8B57; /* Verde */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.iconBtn:hover {
+  transform: scale(1.1);
+  background: #FFD700; /* Amarillo al hover */
+  color: #333;
+}

@@ -5,12 +5,13 @@ import styles from '../../styles/Logo.module.css';
 function Logo() {
   return (
     <Link to="/" className={styles.logo}>
-      <img
-        src="./images/Logo.png" 
-        alt="Logo de HuertoHogar"
-        className={styles.logoImg}
+      <img 
+        src="../images/Logo.png" // (Asegúrate que este nombre sea correcto en Linux/AWS)
+        alt="Logo HuertoHogar" 
+        className={styles.logoImg} 
       />
-      HuertoHogar
+      {/* Envolvemos el texto para darle color específico si es necesario */}
+      <span className={styles.logoText}>HuertoHogar</span>
     </Link>
   );
 }

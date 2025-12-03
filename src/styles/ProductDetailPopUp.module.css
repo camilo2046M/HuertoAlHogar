@@ -1,0 +1,162 @@
+/* src/components/organism/ProductDetailPopUp.module.css */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px); /* Efecto borroso moderno en el fondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Por encima de todo */
+  animation: fadeIn 0.2s ease-out;
+}
+
+.popup {
+  background-color: white;
+  width: 90%;
+  max-width: 900px;
+  border-radius: 16px;
+  overflow: hidden; /* Para que la imagen respete el borde redondeado */
+  display: flex;
+  flex-direction: row; /* Lado a lado en escritorio */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  position: relative;
+  max-height: 90vh; /* Evita que sea más alto que la pantalla */
+  animation: slideUp 0.3s ease-out;
+}
+
+/* --- SECCIÓN DE IMAGEN (Izquierda) --- */
+.imageContainer {
+  width: 50%;
+  background-color: #f8f9fa;
+  position: relative;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Llena el espacio sin deformarse */
+  display: block;
+}
+
+/* --- SECCIÓN DE INFO (Derecha) --- */
+.infoContainer {
+  width: 50%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto; /* Si el texto es muy largo, hace scroll */
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, color 0.2s;
+  z-index: 10;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.closeBtn:hover {
+  transform: scale(1.1);
+  color: #dc3545;
+}
+
+/* --- TIPOGRAFÍA --- */
+.category {
+  color: #2E8B57;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: #1a1a1a;
+  margin: 0 0 1rem 0;
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.meta {
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  font-style: italic;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.actionArea {
+  margin-top: auto;
+}
+
+/* --- ANIMACIONES --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* --- RESPONSIVIDAD (Móvil) --- */
+@media (max-width: 768px) {
+  .popup {
+    flex-direction: column; /* Apilar verticalmente */
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  .imageContainer, .infoContainer {
+    width: 100%;
+  }
+
+  .imageContainer {
+    height: 250px; /* Altura fija para la imagen en móvil */
+    flex-shrink: 0;
+  }
+
+  .infoContainer {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}

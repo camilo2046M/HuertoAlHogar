@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styles from '../../styles/ProductList.module.css'; // 👈 Importa los estilos
 
-function ProductList({ titulo, productos = [], onAddToCart , onDelete}) {
+function ProductList({ titulo, productos = [], onAddToCart , onDelete, onViewDetails}) {
   
   // Si no hay productos...
   if (!productos || productos.length === 0) {
@@ -26,11 +26,12 @@ function ProductList({ titulo, productos = [], onAddToCart , onDelete}) {
       
       <Row>
         {productos.map(producto => (
-          <Col xs={12} md={6} lg={4} key={producto.nombre} className="mb-4">
+        <Col xs={12} sm={6} md={4} lg={3} key={producto.nombre} className="mb-4">
             <ProductCard
               producto={producto}
               onAddToCart={onAddToCart}
               onDelete={onDelete}
+              onViewDetails={onViewDetails}
             />
           </Col>
         ))}

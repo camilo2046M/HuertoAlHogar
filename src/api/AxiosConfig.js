@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // La URL base de tu backend
 const api = axios.create({
-    baseURL: 'http://localhost:9090/api',
+    baseURL: 'http://52.44.157.216:9090/api',
 });
 
 // 🔐 Interceptor REQUEST: Agrega el token a cada petición saliente
