@@ -68,21 +68,26 @@ useEffect(() => {
     };
 
     // --- Llamada a la API (AHORA ES DIFERENTE) ---
-    try {
-      // 3. Llama al backend, que ahora devuelve { "urlPago": "..." }
+try {
       const response = await PedidoService.crearPedido(pedidoRequest);
-      const urlDePago = response.data.urlPago;
+      console.log("Respuesta del Backend:", response.data);
+      const urlDePago = response.data.paymentUrl;
+      // 👇 CAMBIO 1: ¡NO borres el carrito aquí!
+      // onCheckoutSubmit(); <--- ELIMINA O COMENTA ESTA LÍNEA
 
-      // 4. Limpia el carrito en React
-      onCheckoutSubmit(); 
-      
-      // 5. ¡LA MAGIA! Redirige al usuario a la pasarela de pago
-      window.location.href = urlDePago;
+      // 👇 CAMBIO 2: Verificación de seguridad
+      if (urlDePago) {
+          window.location.href = urlDePago;
+      } else {
+          console.error("Error: El backend no devolvió una URL de pago válida.");
+          alert("Error al iniciar el pago. Intenta de nuevo.");
+          setIsLoading(false);
+      }
 
     } catch (error) {
       console.error("Error al crear el pedido:", error);
-      alert("Hubo un error al procesar tu pedido. Por favor, inténtalo de nuevo.");
-      setIsLoading(false); // Reactiva el botón si hay un error
+      alert("Hubo un error al procesar tu pedido.");
+      setIsLoading(false);
     }
   };
 

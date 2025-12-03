@@ -1,19 +1,36 @@
-
 .logo {
-  display: flex; 
-  align-items: center; 
-  text-decoration: none; 
-  color: white; 
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem; 
-  font-weight: 700;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  
+  /* --- NUEVO FONDO Y FORMA --- */
+  background-color: #ffffff; /* Fondo blanco para resaltar */
+  padding: 0.5rem 1.2rem;    /* Espacio alrededor (arriba/abajo, izq/der) */
+  border-radius: 50px;       /* Bordes redondeados (estilo píldora) */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15); /* Sombra para darle profundidad */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.logoImg {
-  height: 1.5em; 
-  margin-right: 0.5rem; 
-}
-
+/* Efecto al pasar el mouse */
 .logo:hover {
-  opacity: 0.9; 
+  transform: scale(1.05); /* Crece un poquito */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* --- TIPOGRAFÍA --- */
+.logoText {
+  /* Aseguramos que el texto sea legible sobre fondo blanco */
+  color: #2E8B57; /* Usamos tu Verde Corporativo en lugar de negro */
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; /* Tamaño de fuente aumentado */
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+}
+
+/* --- IMAGEN DEL LOGO --- */
+.logoImg {
+  height: 2.8em; /* Hacemos el ícono MÁS GRANDE */
+  width: auto;   /* Mantiene la proporción */
+  margin-right: 0.8rem; /* Más espacio entre ícono y texto */
 }

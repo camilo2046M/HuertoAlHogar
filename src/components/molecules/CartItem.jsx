@@ -4,6 +4,11 @@ import styles from '../../styles/CartItem.module.css';
 
 function CartItem({ item, onRemove, onIncrease, onDecrease }) {
 
+  const precioFormateado = new Intl.NumberFormat('es-CL', {
+    style: 'currency',
+    currency: 'CLP'
+  }).format(item.precio);
+  
   return (
     <tr className={styles.cartItemRow}>
       <td>
@@ -13,7 +18,7 @@ function CartItem({ item, onRemove, onIncrease, onDecrease }) {
         </div>
       </td>
 
-      <td>${item.precio}</td>
+      <td>{precioFormateado}</td>
 
       <td>
         <div className={styles.quantityControl}>

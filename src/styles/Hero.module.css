@@ -1,22 +1,128 @@
+/* src/components/organism/Hero.module.css */
 
-.hero {
-  background: url('/images/hero-background.jpg') center/cover; 
-  color: rgb(0, 0, 0);
-  text-align: center;
-  padding: 8rem 2rem; 
+.heroSection {
+  padding: 5rem 0; /* Espacio vertical generoso */
+  background-color: #ffffff; /* Fondo limpio */
+  overflow: hidden;
 }
 
-.hero h2 {
+/* --- COLUMNA IZQUIERDA (TEXTO) --- */
+.textContent {
+  padding-right: 2rem; /* Espacio entre texto e imagen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%; /* Para centrar verticalmente */
+}
+
+.badge {
+  display: inline-block;
+  background-color: #e8f5e9; /* Verde muy suave */
+  color: #2E8B57;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  align-self: flex-start; /* Alineado a la izquierda */
+}
+
+.title {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  margin-bottom: 1rem; 
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  text-align: left; /* Asegura alineación izquierda */
 }
 
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem; 
+.description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  text-align: left;
+  max-width: 90%; /* Evita líneas demasiado largas */
 }
 
-/*.heroContent {
+.actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
 
-}*/
+.ctaBtn {
+  /* Hereda estilos de Button.module.css pero podemos ajustar aquí */
+  padding: 0.8rem 2rem !important;
+  font-size: 1.1rem !important;
+}
+
+.secondaryLink {
+  color: #2E8B57;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.secondaryLink:hover {
+  border-bottom-color: #2E8B57;
+}
+
+/* --- COLUMNA DERECHA (IMAGEN) --- */
+.imageWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroImage {
+  width: 100%;
+  max-width: 500px; /* Limita el ancho máximo */
+  height: 400px;    /* Altura fija para uniformidad */
+  object-fit: cover; /* Recorta la imagen para llenar el espacio */
+  border-radius: 20px; /* Bordes redondeados */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Sombra suave */
+  /* Opcional: Un pequeño giro para dinamismo */
+  /* transform: rotate(2deg); */ 
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 3rem 0;
+    text-align: center; /* Centrar todo en móvil */
+  }
+
+  .textContent {
+    padding-right: 0;
+    align-items: center; /* Centrar badges y botones */
+    margin-bottom: 3rem;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  
+  .description {
+    text-align: center;
+    margin: 0 auto 2rem auto;
+  }
+  
+  .heroImage {
+    height: 300px; /* Más pequeña en móvil */
+  }
+  
+  .badge {
+    align-self: center;
+  }
+  
+  .actions {
+    justify-content: center;
+  }
+}

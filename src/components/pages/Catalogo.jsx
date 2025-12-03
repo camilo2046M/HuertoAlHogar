@@ -6,6 +6,7 @@ import styles from '../../styles/Catalogo.module.css';
 import { useAuth } from '../../context/AuthContext'; 
 import Button from '../atoms/Button';
 import ProductFormPopUp from '../organism/ProductFormPopUp.jsx';
+import ProductDetailPopUp from '../organism/ProductDetailPopUp';
 
 const processProducts = (products, searchTerm, sortOrder) => {
   let processed = [...products];
@@ -82,6 +83,8 @@ function Catalogo({ onAddToCart }) {
     fetchCategorias();
   }, []);
 
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
   // --- PROCESAMIENTO (useMemo) ---
   // Asegúrate de incluir los estados de datos en las dependencias
   const processedFrutas = useMemo(() => processProducts(frutas, searchTerm, sortOrder), [frutas, searchTerm, sortOrder]);
@@ -145,6 +148,7 @@ function Catalogo({ onAddToCart }) {
           productos={processedFrutas} 
           onAddToCart={onAddToCart} 
           onDelete={handleDeleteProduct}
+          onViewDetails={(producto) => setSelectedProduct(producto)}
         />
       )}
       
@@ -154,6 +158,7 @@ function Catalogo({ onAddToCart }) {
           productos={processedVerduras} 
           onAddToCart={onAddToCart} 
           onDelete={handleDeleteProduct}
+          onViewDetails={(producto) => setSelectedProduct(producto)}
         />
       )}
 
@@ -163,6 +168,7 @@ function Catalogo({ onAddToCart }) {
           productos={processedOrganicos} 
           onAddToCart={onAddToCart} 
           onDelete={handleDeleteProduct}
+          onViewDetails={(producto) => setSelectedProduct(producto)}
         />
       )}
 
@@ -172,8 +178,17 @@ function Catalogo({ onAddToCart }) {
           productos={processedLacteos} 
           onAddToCart={onAddToCart} 
           onDelete={handleDeleteProduct}
+          onViewDetails={(producto) => setSelectedProduct(producto)}
         />
       )}
+
+      {selectedProduct && (
+         <ProductDetailPopUp 
+            product={selectedProduct} 
+            onClose={() => setSelectedProduct(null)} 
+            onAddToCart={onAddToCart}
+         />
+       )}
 
       {/* Popup de Creación */}
       {isProductPopupOpen && (
